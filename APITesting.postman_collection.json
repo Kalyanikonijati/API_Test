@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "dadf8770-0e03-4821-b7e1-439b806d9496",
+		"name": "APITesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32672924"
+	},
+	"item": [
+		{
+			"name": "Readuser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('checking 200 OK', function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"})\r",
+							"\r",
+							"pm.test('validate total is 12', function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.total).to.equal(12);\r",
+							"})\r",
+							"\r",
+							"pm.test('validate total pages is 2', function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.total_pages).to.equal(2);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"validate id is 7\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[0].id).to.equal(7);\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"pm.test('validate id is 8', function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[1].id).to.equal(8);\r",
+							"})\r",
+							"\r",
+							"pm.test('validate id is 9', function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[2].id).to.equal(9);\r",
+							"})\r",
+							"\r",
+							"pm.test('validate id is 10', function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[3].id).to.equal(10);\r",
+							"})\r",
+							"\r",
+							"pm.test('validate id is 11', function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[4].id).to.equal(11);\r",
+							"})\r",
+							"\r",
+							"pm.test('validate id is 12', function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data[5].id).to.equal(12);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"validate email\", function (){\r",
+							"    const jsonData = pm.response.json();\r",
+							"    const userList = jsonData.data;\r",
+							"    pm.expect(userList.length == 7).to.be.true;\r",
+							"    let emailExist = false;\r",
+							"    userList.forEach(function(element, index){\r",
+							"        if(element.email === \"michael.lawson@reqres.in\"){\r",
+							"            emailExist = true;\r",
+							"            console.log(index);\r",
+							"        }\r",
+							"    })\r",
+							"    pm.expect(emailExist).to.be.true;\r",
+							"})\r",
+							"\r",
+							"    \r",
+							"    \r",
+							"\r",
+							"// \"email\": \"michael.lawson@reqres.in\",\r",
+							"// Removed the code causing TypeError"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Readuser Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"console.log(jsonData.length)",
+							"console.log(jsonData[0])",
+							"console.log(jsonData[0].data)",
+							"console.log(jsonData[0].data.length)",
+							"",
+							"pm.test('Number of datas = ' + jsonData[0].datas.length, function () {",
+							"    pm.expect(jsonData[0].datas.length).to.equal(7);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updateuser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Createuser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleteuser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion resident\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
